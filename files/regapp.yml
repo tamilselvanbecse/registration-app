@@ -3,6 +3,6 @@
   
   tasks:
   - name: create docker image
-    command: build -t regapp:latest .
+    command: docker build -t regapp:latest .
     args:
       chdir: /opt/docker

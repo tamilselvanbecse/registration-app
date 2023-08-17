@@ -35,6 +35,11 @@ pipeline{
                 sh 'scp -r  /var/lib/jenkins/workspace/project/files/* ansadmin@172.31.41.45:/opt/docker/'
             }
         }
+        stage("Creating Docker image"){
+            steps {
+                sh 'ansible-playbook /opt/docker/regapp.yml'
+            }
+        }
         
     }
     
