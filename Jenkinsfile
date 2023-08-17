@@ -4,12 +4,13 @@ pipeline{
         maven 'maven'
         jdk 'java'
     }
-    def remote = [:]
+    def remote = [:] {
     remote.name = 'ansible'
     remote.host = '172.31.41.45'
     remote.user = 'ansansible'
     remote.password = 'admin@123'
     remote.allowAnyHosts = true
+    }
         stages{
             stage("Cleanup Workspace"){
                 steps {
