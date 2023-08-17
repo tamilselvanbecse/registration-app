@@ -32,7 +32,7 @@ pipeline{
         }
         stage("Copy Yaml files to Ansible server"){
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: 'project/files', sourceFiles: 'project/files/**')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sh 'scp -r  /var/lib/jenkins/workspace/project/files/* ansadmin@172.31.41.45:/opt/docker/'
             }
         }
         
