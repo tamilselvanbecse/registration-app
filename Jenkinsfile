@@ -4,6 +4,12 @@ pipeline{
         maven 'maven'
         jdk 'java'
     }
+    def remote = [:]
+    remote.name = 'ansible'
+    remote.host = '172.31.41.45'
+    remote.user = 'ansansible'
+    remote.password = 'admin@123'
+    remote.allowAnyHosts = true
         stages{
             stage("Cleanup Workspace"){
                 steps {
@@ -35,6 +41,9 @@ pipeline{
                 sshPublisher(publishers: [sshPublisherDesc(configName: 'ansible', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: 'project/files', sourceFiles: 'project/files/*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
+        stage('Remote SSH') {
+            sshPut remote: remote, from: 'project/files/*', into: '/opt/docker'
+    }
     }
     
 }
