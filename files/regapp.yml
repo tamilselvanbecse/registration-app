@@ -1,6 +1,6 @@
 ---
 - hosts: ansible
   - name: create docker image
-    command: build -t regapp:latest .
-    args:
-      chdir: /opt/docker
+      command: build -t regapp:latest .
+      args:
+        chdir: /opt/docker
