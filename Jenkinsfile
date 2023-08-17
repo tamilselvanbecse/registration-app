@@ -1,11 +1,12 @@
 pipeline{
-    stages{
-        stage("Cleanup Workspace"){
-            steps {
-                cleanWs()
+    agent any
+        stages{
+            stage("Cleanup Workspace"){
+                steps {
+                    cleanWs()
+                }
             }
-        }
         
-    }
+        }
     
 }
