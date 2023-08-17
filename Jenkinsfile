@@ -1,8 +1,8 @@
 pipeline{
     agent any
     tools {
-        maven '3.9.4' 
-        java '17.0.8' 
+        maven 
+        java 
     }
         stages{
             stage("Cleanup Workspace"){
