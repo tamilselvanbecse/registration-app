@@ -11,7 +11,17 @@ pipeline{
                     checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/tamilselvanbecse/registration-app']])
             }            
         }
-        
+        stage(" Build the application"){
+            steps {
+                sh "mvn clean package"
+            }            
         }
+        stage("Test the application SCM"){
+            steps {
+                sh "mvn test"
+            }            
+        }
+        
+    }
     
 }
